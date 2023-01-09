@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+			integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
+		/>
+		<link rel="stylesheet" href="./styles.css" />
+		<title>Tic-Tac-Toe</title>
+	</head>
+	<body class="bg-dark">
+		<div class="container" id="inputDetails">
+			<div class="row h-100">
+				<div class="col-md-3 my-auto"></div>
+				<div class="col-md-6 my-auto">
+					<div class="jumbotron p-3 bg-secondary text-white">
+						<h3>Enter the details:</h3>
+						<hr class="my-1 bg-white" />
+						<div id="createRoom">
+							<div class="form-group mt-3">
+								<label for="nameInputFieldForCreateRoom">Name:</label>
+								<input
+									type="text"
+									id="nameInputFieldForCreateRoom"
+									placeholder="Name"
+									class="form-control"
+								/>
+							</div>
+							<div class="form-group">
+								<button id="createRoomBtn" class="btn btn-primary btn-block">
+									Create Room
+								</button>
+							</div>
+						</div>
+						<hr class="my-1 bg-white" />
+						<div class="text-center">OR</div>
+						<hr class="my-1 bg-white" />
+						<div id="joinRoom">
+							<div class="form-group mt-3">
+								<label for="nameInputFieldForJoinRoom">Name:</label>
+								<input
+									type="text"
+									id="nameInputFieldForJoinRoom"
+									placeholder="Name"
+									class="form-control"
+								/>
+							</div>
+							<div class="form-group mt-3">
+								<label for="roomInputField">Room:</label>
+								<input
+									type="text"
+									id="roomInputField"
+									placeholder="Room ID"
+									class="form-control"
+								/>
+							</div>
+							<div class="form-group">
+								<button id="joinRoomBtn" class="btn btn-primary btn-block">
+									Join Room
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3"></div>
+			</div>
+		</div>
+		<div
+			id="waitForOtherPlayer"
+			class="container height100vh"
+			style="display: none"
+		>
+			<div class="row h-100">
+				<div class="col-12 text-center text-white my-auto">
+					<img
+						src="./images/loading.gif"
+						alt="Loading..."
+						width="50px"
+						class="my-3"
+					/>
+					<h4>Waiting for other player...</h4>
+					<h3>
+						Room ID: <span id="showRoomIdForWaitingScreen"></span>
+						<button class="btn" onclick="copyRoomIdToClipboard()">
+							<img
+								src="./images/copy.png"
+								width="25px"
+								title="Copy"
+								alt="Click to copy"
+							/>
+						</button>
+					</h3>
+					<div>Share the room id withe other player!</div>
+				</div>
+			</div>
+		</div>
+		<div
+			class="container height100vh text-white text-center"
+			id="playArea"
+			style="display: none"
+		>
+			<div class="row h-100">
+				<div class="col-12 my-auto">
+					<div>
+						<div class="row">
+							<div class="col-6">
+								<h3><span id="playAreaPlayerDetails"></span></h3>
+							</div>
+							<div class="col-6">
+								<h3><span id="playAreaCoplayerDetails"></span></h3>
+							</div>
+						</div>
+					</div>
+					<div id="tableArea">
+						<table id="playTable" border="2">
+							<tr>
+								<td
+									id="box0"
+									class="fontSize2Rem height20vh"
+									onclick="boxClick(0,'player')"
+								></td>
+								<td
+									id="box1"
+									class="fontSize2Rem height20vh"
+									onclick="boxClick(1,'player')"
+								></td>
+								<td
+									id="box2"
+									class="fontSize2Rem height20vh"
+									onclick="boxClick(2,'player')"
+								></td>
+							</tr>
+							<tr>
+								<td
+									id="box3"
+									class="fontSize2Rem height20vh"
+									onclick="boxClick(3,'player')"
+								></td>
+								<td
+									id="box4"
+									class="fontSize2Rem height20vh"
+									onclick="boxClick(4,'player')"
+								></td>
+								<td
+									id="box5"
+									class="fontSize2Rem height20vh"
+									onclick="boxClick(5,'player')"
+								></td>
+							</tr>
+							<tr>
+								<td
+									id="box6"
+									class="fontSize2Rem height20vh"
+									onclick="boxClick(6,'player')"
+								></td>
+								<td
+									id="box7"
+									class="fontSize2Rem height20vh"
+									onclick="boxClick(7,'player')"
+								></td>
+								<td
+									id="box8"
+									class="fontSize2Rem height20vh"
+									onclick="boxClick(8,'player')"
+								></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script
+			src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+			integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/short-unique-id@latest/dist/short-unique-id.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+		<script src="./script.js"></script>
+	</body>
+</html>

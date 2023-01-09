@@ -1,0 +1,35 @@
+#inputDetails {
+	height: 100vh;
+}
+
+#playTable {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.fontSize2Rem {
+    font-size: 2rem;
+}
+
+.height20vh {
+    height: 20vh;
+}
+
+.height100vh {
+	height: 100vh;
+}
+
+.jumbotron {
+	border-radius: 0px;
+}
+
+.active-table {
+	border: 2px solid rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.inactive-table {
+    border: 2px solid rgb(179, 179, 179);
+    color: rgb(179, 179, 179);
+    cursor: not-allowed;
+}
